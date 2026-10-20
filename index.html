@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chúc Mừng Mẹ Yêu Ngày 20/10</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    .font-script { font-family: 'Dancing Script', cursive; }
+    .font-serif-title { font-family: 'Playfair Display', serif; }
+    .font-body { font-family: 'Quicksand', sans-serif; }
+
+    /* Custom Animations */
+    @keyframes floatPetal {
+      0% {
+        transform: translateY(-10vh) translateX(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      10% { opacity: 0.8; }
+      90% { opacity: 0.8; }
+      100% {
+        transform: translateY(105vh) translateX(120px) rotate(720deg) scale(1.1);
+        opacity: 0;
+      }
+    }
+
+    @keyframes glowPulse {
+      0%, 100% { filter: drop-shadow(0 0 15px rgba(244, 114, 182, 0.6)) drop-shadow(0 0 35px rgba(251, 113, 133, 0.4)); }
+      50% { filter: drop-shadow(0 0 25px rgba(244, 114, 182, 0.9)) drop-shadow(0 0 50px rgba(244, 63, 94, 0.6)); }
+    }
+
+    @keyframes stemGrow {
+      0% { stroke-dashoffset: 1000; }
+      100% { stroke-dashoffset: 0; }
+    }
+
+    @keyframes leafSproutLeft {
+      0% { transform: scale(0) rotate(-40deg); opacity: 0; }
+      60% { transform: scale(1.15) rotate(10deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    @keyframes leafSproutRight {
+      0% { transform: scale(0) rotate(40deg); opacity: 0; }
+      60% { transform: scale(1.15) rotate(-10deg); opacity: 1; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    @keyframes bloomBud {
+      0% { transform: scale(0.1) rotate(-15deg); opacity: 0; }
+      50% { transform: scale(0.6) rotate(5deg); opacity: 0.8; }
+      100% { transform: scale(1) rotate(0deg); opacity: 1; }
+    }
+
+    @keyframes petalUnfoldLayer1 {
+      0% { transform: scale(0) rotate(0deg); opacity: 0; }
+      100% { transform: scale(1) rotate(0deg); opacity: 0.95; }
+    }
+
+    @keyframes petalUnfoldLayer2 {
+      0% { transform: scale(0) rotate(15deg); opacity: 0; }
+      100% { transform: scale(1) rotate(30deg); opacity: 0.9; }
+    }
+
+    @keyframes gentleSway {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(1.5deg); }
+      75% { transform: rotate(-1.5deg); }
+    }
+
+    @keyframes shimmerStars {
+      0%, 100% { opacity: 0.3; transform: scale(0.8); }
+      50% { opacity: 1; transform: scale(1.2); }
+    }
+
+    .flower-sway {
+      transform-origin: bottom center;
+      animation: gentleSway 6s ease-in-out infinite alternate;
+    }
+
+    .shimmer {
+      animation: shimmerStars 3s ease-in-out infinite alternate;
+    }
+
+    /* Floating petals generation support */
+    .petal {
+      position: absolute;
+      top: 0;
+      pointer-events: none;
+      will-change: transform, opacity;
+      animation: floatPetal linear infinite;
+    }
+
+    /* SVG transform origins (tọa độ viewBox) – không phụ thuộc Tailwind */
+    #leaf-left   { transform-box: view-box; transform-origin: 190px 410px; }
+    #leaf-right  { transform-box: view-box; transform-origin: 193px 460px; }
+    #flower-head { transform-box: view-box; transform-origin: 195px 185px; }
+    #calyx       { transform-box: view-box; transform-origin: 195px 190px; }
+
+    /* Chấm hạt mầm: ping quanh tâm của chính nó (bản gốc scale từ gốc toạ độ nên bay lệch) */
+    @keyframes seedPing {
+      0%   { transform: scale(1);   opacity: 0.9; }
+      80%, 100% { transform: scale(2.6); opacity: 0; }
+    }
+    #seed-ping { transform-box: fill-box; transform-origin: center; animation: seedPing 2s cubic-bezier(0,0,0.2,1) infinite; }
+
+    /* Cho phép cuộn trên màn hình nhỏ */
+    html, body { overflow-x: hidden; }
+
+    /* Focus bàn phím rõ ràng */
+    button:focus-visible { outline: 2px solid #fda4af; outline-offset: 3px; }
+
+    /* Tôn trọng người dùng giảm chuyển động */
+    @media (prefers-reduced-motion: reduce) {
+      .petal, .flower-sway, .shimmer, #seed-ping { animation: none !important; }
+      .petal { display: none; }
+    }
+  </style>
+</head>
+<body class="bg-[#150a18] text-rose-100 min-h-screen relative overflow-x-hidden font-body select-none">
+
+  <!-- Ambient Glowing Background Gradient Orbs -->
+  <div class="fixed inset-0 pointer-events-none z-0">
+    <div class="absolute -top-32 -left-32 w-[600px] h-[600px] bg-rose-600/20 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 -right-40 w-[650px] h-[650px] bg-pink-500/20 rounded-full blur-[160px]"></div>
+    <div class="absolute -bottom-40 left-1/3 w-[700px] h-[700px] bg-purple-700/25 rounded-full blur-[180px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(15,5,18,0.7)_100%)]"></div>
+  </div>
+
+  <!-- Falling Petals Canvas / Container -->
+  <div id="petals-container" class="fixed inset-0 pointer-events-none z-10 overflow-hidden"></div>
+
+  <!-- Main Showcase Container -->
+  <main class="relative z-20 w-full min-h-screen flex flex-col items-center justify-between gap-4 px-6 lg:px-16 py-6 xl:py-8">
+    
+  <!-- Điều khiển: nhạc + xem lại (nằm trong luồng trên màn hình nhỏ, cố định góc phải trên màn hình xl+) -->
+  <div class="relative z-50 w-full flex flex-wrap items-center justify-center gap-3 xl:fixed xl:top-6 xl:right-8 xl:w-auto">
+    <button id="music-toggle" onclick="toggleAudio()" aria-pressed="false" class="px-4 py-2 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-md border border-rose-300/30 text-rose-200 text-sm font-medium flex items-center gap-2 shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 group">
+      <svg id="music-icon" class="w-4 h-4 text-rose-300" style="animation-duration: 4s;" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+      </svg>
+      <span id="music-text">Bật âm điệu</span>
+    </button>
+    <button onclick="replayAnimation()" class="px-4 py-2 rounded-full bg-rose-500/20 hover:bg-rose-500/30 backdrop-blur-md border border-rose-400/40 text-rose-200 text-sm font-medium flex items-center gap-2 shadow-lg transition-all duration-300 hover:scale-105 active:scale-95">
+      <svg class="w-4 h-4 text-rose-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+      </svg>
+      <span>Xem lại từ đầu</span>
+    </button>
+  </div>
+
+    <!-- Top Header -->
+    <header class="text-center pt-4 xl:pt-2 transition-all duration-1000 opacity-90">
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-rose-500/15 border border-rose-400/30 text-rose-300 text-xs tracking-widest uppercase font-semibold mb-2 backdrop-blur-md shadow-sm">
+        <span class="w-2 h-2 rounded-full bg-rose-400 animate-ping"></span>
+        Ngày Phụ Nữ Việt Nam 20 - 10
+      </div>
+      <h2 class="text-rose-200/80 text-sm sm:text-base tracking-widest uppercase font-medium">Món quà yêu thương gửi đến Mẹ kính yêu</h2>
+    </header>
+
+    <!-- Main Interactive Stage (2-Column Grid on Desktop) -->
+    <div class="w-full max-w-7xl grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center my-auto py-4">
+      
+      <!-- Left Column: The Magical Growing & Blooming Flower (SVG & Canvas Effects) -->
+      <div class="lg:col-span-5 flex flex-col items-center justify-center relative min-h-[480px] lg:min-h-[540px]">
+        
+        <!-- Ground / Pot Aura -->
+        <div class="absolute bottom-6 w-56 h-12 bg-rose-950/60 rounded-full blur-xl border border-rose-500/20"></div>
+
+        <!-- The Flower SVG -->
+        <div class="relative w-full max-w-[380px] h-[420px] sm:h-[500px] flex items-end justify-center flower-sway">
+          <svg id="flower-svg" viewBox="0 0 400 600" class="w-full h-full overflow-visible drop-shadow-[0_10px_25px_rgba(244,63,94,0.35)]">
+            <defs>
+              <!-- Stem Gradient -->
+              <linearGradient id="stemGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#14532d" />
+                <stop offset="50%" stop-color="#22c55e" />
+                <stop offset="100%" stop-color="#86efac" />
+              </linearGradient>
+
+              <!-- Leaf Gradient -->
+              <linearGradient id="leafGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#4ade80" />
+                <stop offset="100%" stop-color="#15803d" />
+              </linearGradient>
+
+              <!-- Petal Outer Gradient -->
+              <linearGradient id="petalOuterGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#be185d" />
+                <stop offset="50%" stop-color="#f43f5e" />
+                <stop offset="100%" stop-color="#fbcfe8" />
+              </linearGradient>
+
+              <!-- Petal Center Gradient -->
+              <linearGradient id="petalCenterGrad" x1="0%" y1="100%" x2="0%" y2="0%">
+                <stop offset="0%" stop-color="#e11d48" />
+                <stop offset="70%" stop-color="#fb7185" />
+                <stop offset="100%" stop-color="#fff1f2" />
+              </linearGradient>
+
+              <!-- Stamen Glow -->
+              <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#fef08a" />
+                <stop offset="60%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#b45309" />
+              </radialGradient>
+
+              <filter id="glowEffect" x="-20%" y="-20%" width="140%" height="140%">
+                <feGaussianBlur stdDeviation="8" result="blur" />
+                <feComposite in="SourceGraphic" in2="blur" operator="over" />
+              </filter>
+            </defs>
+
+            <!-- SEED & SPROUTING BASE -->
+            <g id="seed-group" class="transition-all duration-700">
+              <ellipse cx="200" cy="550" rx="14" ry="9" fill="#78350f" class="shadow-inner" />
+              <!-- Little sprout shoot -->
+              <circle id="seed-ping" cx="200" cy="546" r="4" fill="#86efac" />
+            </g>
+
+            <!-- STEM (Animated strokeDashoffset via JS/CSS) -->
+            <path id="flower-stem"
+                  d="M200,550 Q180,420 215,310 T195,190"
+                  fill="none"
+                  stroke="url(#stemGrad)"
+                  stroke-width="7"
+                  stroke-linecap="round"
+                  style="stroke-dasharray: 381; stroke-dashoffset: 381; transition: stroke-dashoffset 2.2s cubic-bezier(0.4, 0, 0.2, 1);" />
+
+            <!-- LEAF 1 (Left, sprouts at t=1.2s) -->
+            <g id="leaf-left" class="opacity-0" style="transition: transform 1s ease-out, opacity 0.8s;">
+              <path d="M190,410 C130,400 110,340 100,320 C120,360 160,390 190,410 Z"
+                    fill="url(#leafGrad)" />
+              <path d="M190,410 Q140,365 105,325" fill="none" stroke="#bbf7d0" stroke-width="1.5" opacity="0.7" />
+            </g>
+
+            <!-- LEAF 2 (Right, sprouts at t=1.8s) -->
+            <g id="leaf-right" class="opacity-0" style="transition: transform 1s ease-out, opacity 0.8s;">
+              <path d="M193,460 C255,466 295,432 308,392 C280,426 240,448 193,460 Z"
+                    fill="url(#leafGrad)" />
+              <path d="M193,460 Q250,432 303,397" fill="none" stroke="#bbf7d0" stroke-width="1.5" opacity="0.7" />
+            </g>
+
+            <!-- BUD / CALYX BASE -->
+            <g id="calyx" class="opacity-0 transition-opacity duration-500">
+              <path d="M185,195 C190,210 200,210 205,195 C215,190 210,180 195,185 C180,180 175,190 185,195 Z" fill="#15803d" />
+            </g>
+
+            <!-- BLOOMING FLOWER HEAD (Origin at top of stem: 195, 185) -->
+            <g id="flower-head" class="opacity-0" style="transform: scale(0); transition: transform 2.2s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 1.5s ease-in-out;">
+              
+              <!-- Aura/Halo behind petals -->
+              <circle cx="195" cy="185" r="85" fill="#f43f5e" opacity="0.25" filter="url(#glowEffect)" />
+
+              <!-- LAYER 1: OUTER LARGE PETALS (8 petals rotating around center 195, 185) -->
+              <g id="outer-petals">
+                <!-- Petal 1 (0 deg) -->
+                <path d="M195,185 C165,120 150,55 195,30 C240,55 225,120 195,185 Z" fill="url(#petalOuterGrad)" opacity="0.92" />
+                <!-- Petal 2 (45 deg) -->
+                <path d="M195,185 C165,120 150,55 195,30 C240,55 225,120 195,185 Z" fill="url(#petalOuterGrad)" opacity="0.92" transform="rotate(45 195 185)" />
+                <!-- Petal 3 (90 deg) -->
+                <path d="M195,185 C165,120 150,55 195,30 C240,55 225,120 195,185 Z" fill="url(#petalOuterGrad)" opacity="0.92" transform="rotate(90 195 185)" />
+                <!-- Petal 4 (135 deg) -->
+                <path d="M195,185 C165,120 150,55 195,30 C240,55 225,120 195,185 Z" fill="url(#petalOuterGrad)" opacity="0.92" transform="rotate(135 195 185)" />
+                <!-- Petal 5 (180 deg) -->
+                <path d="M195,185 C165,120 150,55 195,30 C240,55 225,120 195,185 Z" fill="url(#petalOuterGrad)" opacity="0.92" transform="rotate(180 195 185)" />
+                <!-- Petal 6 (225 deg) -->
+                <path d="M195,185 C165,120 150,55 195,30 C240,55 225,120 195,185 Z" fill="url(#petalOuterGrad)" opacity="0.92" transform="rotate(225 195 185)" />
+                <!-- Petal 7 (270 deg) -->
+                <path d="M195,185 C165,120 150,55 195,30 C240,55 225,120 195,185 Z" fill="url(#petalOuterGrad)" opacity="0.92" transform="rotate(270 195 185)" />
+                <!-- Petal 8 (315 deg) -->
+                <path d="M195,185 C165,120 150,55 195,30 C240,55 225,120 195,185 Z" fill="url(#petalOuterGrad)" opacity="0.92" transform="rotate(315 195 185)" />
+              </g>
+
+              <!-- LAYER 2: MIDDLE PETALS (Rotated offset with soft pink glow) -->
+              <g id="mid-petals" transform="rotate(22.5 195 185)">
+                <path d="M195,185 C172,135 160,85 195,65 C230,85 218,135 195,185 Z" fill="url(#petalCenterGrad)" opacity="0.95" />
+                <path d="M195,185 C172,135 160,85 195,65 C230,85 218,135 195,185 Z" fill="url(#petalCenterGrad)" opacity="0.95" transform="rotate(45 195 185)" />
+                <path d="M195,185 C172,135 160,85 195,65 C230,85 218,135 195,185 Z" fill="url(#petalCenterGrad)" opacity="0.95" transform="rotate(90 195 185)" />
+                <path d="M195,185 C172,135 160,85 195,65 C230,85 218,135 195,185 Z" fill="url(#petalCenterGrad)" opacity="0.95" transform="rotate(135 195 185)" />
+                <path d="M195,185 C172,135 160,85 195,65 C230,85 218,135 195,185 Z" fill="url(#petalCenterGrad)" opacity="0.95" transform="rotate(180 195 185)" />
+                <path d="M195,185 C172,135 160,85 195,65 C230,85 218,135 195,185 Z" fill="url(#petalCenterGrad)" opacity="0.95" transform="rotate(225 195 185)" />
+                <path d="M195,185 C172,135 160,85 195,65 C230,85 218,135 195,185 Z" fill="url(#petalCenterGrad)" opacity="0.95" transform="rotate(270 195 185)" />
+                <path d="M195,185 C172,135 160,85 195,65 C230,85 218,135 195,185 Z" fill="url(#petalCenterGrad)" opacity="0.95" transform="rotate(315 195 185)" />
+              </g>
+
+              <!-- LAYER 3: INNER PETALS (Curling center) -->
+              <g id="inner-petals" transform="rotate(10 195 185)">
+                <path d="M195,185 C180,150 170,110 195,95 C220,110 210,150 195,185 Z" fill="#ffe4e6" opacity="0.98" />
+                <path d="M195,185 C180,150 170,110 195,95 C220,110 210,150 195,185 Z" fill="#ffe4e6" opacity="0.98" transform="rotate(60 195 185)" />
+                <path d="M195,185 C180,150 170,110 195,95 C220,110 210,150 195,185 Z" fill="#ffe4e6" opacity="0.98" transform="rotate(120 195 185)" />
+                <path d="M195,185 C180,150 170,110 195,95 C220,110 210,150 195,185 Z" fill="#ffe4e6" opacity="0.98" transform="rotate(180 195 185)" />
+                <path d="M195,185 C180,150 170,110 195,95 C220,110 210,150 195,185 Z" fill="#ffe4e6" opacity="0.98" transform="rotate(240 195 185)" />
+                <path d="M195,185 C180,150 170,110 195,95 C220,110 210,150 195,185 Z" fill="#ffe4e6" opacity="0.98" transform="rotate(300 195 185)" />
+              </g>
+
+              <!-- CENTER STAMEN / PISTIL -->
+              <circle cx="195" cy="185" r="24" fill="url(#centerGlow)" filter="url(#glowEffect)" />
+              <!-- Stamens dots -->
+              <g stroke="#fef08a" stroke-width="2" opacity="0.9">
+                <circle cx="190" cy="178" r="2.5" fill="#fef9c3" />
+                <circle cx="202" cy="180" r="2" fill="#fef9c3" />
+                <circle cx="194" cy="192" r="2.5" fill="#fef9c3" />
+                <circle cx="186" cy="188" r="1.8" fill="#fef9c3" />
+                <circle cx="204" cy="190" r="2.2" fill="#fef9c3" />
+                <circle cx="196" cy="184" r="3" fill="#ffffff" />
+              </g>
+
+              <!-- Sparkle particle ring -->
+              <g class="shimmer">
+                <circle cx="140" cy="130" r="2.5" fill="#fde047" />
+                <circle cx="250" cy="130" r="3" fill="#fde047" />
+                <circle cx="265" cy="220" r="2" fill="#f472b6" />
+                <circle cx="130" cy="225" r="2.8" fill="#f472b6" />
+                <circle cx="195" cy="80" r="3.5" fill="#ffffff" />
+              </g>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Growth Stage Status Label -->
+        <div id="stage-badge" role="status" aria-live="polite" class="mt-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-rose-300/80 text-xs tracking-wider backdrop-blur-md transition-all duration-500">
+          🌱 Hạt mầm đang nảy chồi vươn lên...
+        </div>
+      </div>
+
+      <!-- Right Column: Heartfelt Wish Letter Card (Emerges smoothly as flower blooms) -->
+      <div class="lg:col-span-7 flex flex-col items-center lg:items-start justify-center">
+        
+        <!-- Wish Card -->
+        <div id="wish-card" class="w-full max-w-xl bg-gradient-to-br from-white/[0.12] to-white/[0.04] backdrop-blur-xl border border-rose-300/30 rounded-3xl p-8 sm:p-10 shadow-[0_20px_60px_-15px_rgba(244,63,94,0.3)] relative overflow-hidden transition-all duration-1000 transform translate-y-12 opacity-0 pointer-events-none">
+          
+          <!-- Card Decorative Corner Accents -->
+          <div class="absolute -top-12 -right-12 w-36 h-36 bg-rose-500/20 rounded-full blur-2xl pointer-events-none"></div>
+          <div class="absolute -bottom-10 -left-10 w-32 h-32 bg-pink-500/20 rounded-full blur-2xl pointer-events-none"></div>
+          
+          <!-- Golden Stamp / Flower badge -->
+          <div class="flex items-center justify-between border-b border-rose-300/20 pb-5 mb-6">
+            <div class="flex items-center gap-3">
+              <span class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-500 to-pink-400 flex items-center justify-center text-white shadow-md shadow-rose-500/40 text-xl">
+                🌸
+              </span>
+              <div>
+                <span class="text-xs tracking-widest text-rose-300 uppercase font-semibold block">Gửi Mẹ kính yêu của con</span>
+                <span class="text-xs text-rose-200/60 font-serif-title italic">20 Tháng 10 - Ngày Phụ Nữ Việt Nam</span>
+              </div>
+            </div>
+            <div class="text-rose-300/70 text-xs font-mono px-3 py-1 rounded-full bg-rose-500/10 border border-rose-400/20">
+              Mãi Yêu Mẹ ❤️
+            </div>
+          </div>
+
+          <!-- Main Wish Typography -->
+          <h1 id="wish-headline" class="font-serif-title text-3xl sm:text-4xl text-transparent bg-clip-text bg-gradient-to-r from-rose-200 via-pink-100 to-rose-300 font-bold mb-4 leading-snug">
+            Chúc Mẹ Yêu Luôn Bình An, Rạng Rỡ & Hạnh Phúc!
+          </h1>
+
+          <div id="wish-body" class="space-y-4 text-rose-100/90 text-base sm:text-lg leading-relaxed font-body">
+            <p>
+              Giống như đóa hoa kiên cường nảy mầm từ đất sâu, rồi tỏa hương sắc rực rỡ nhất dưới ánh mặt trời, tình yêu và sự hy sinh thầm lặng của Mẹ luôn là điều kỳ diệu và ấm áp nhất trong cuộc đời con.
+            </p>
+            <p>
+              Nhân ngày Phụ Nữ Việt Nam 20/10, con chúc Mẹ luôn tràn đầy sức khỏe, nụ cười luôn nở trên môi, mỗi ngày trôi qua đều ngập tràn niềm vui, thanh thản và sự an nhiên.
+            </p>
+            <p class="font-script text-2xl sm:text-3xl text-rose-300 pt-2 text-right">
+              "Cảm ơn Mẹ vì tất cả! Con yêu Mẹ rất nhiều."
+            </p>
+          </div>
+
+          <!-- Interactive Blessing Action Buttons -->
+          <div class="mt-8 pt-6 border-t border-rose-300/20 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+              <button onclick="burstFlowerPetals(event)" class="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-rose-500 to-pink-500 hover:from-rose-600 hover:to-pink-600 text-white font-medium text-sm shadow-lg shadow-rose-500/30 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2">
+                <span>🌹 Thả thêm ngàn hoa</span>
+              </button>
+              <button onclick="sendLoveHeart(event)" class="px-5 py-2.5 rounded-2xl bg-white/10 hover:bg-white/20 text-rose-200 font-medium text-sm border border-rose-300/30 transition-all duration-300 hover:scale-105 active:scale-95 flex items-center gap-2">
+                <span>💖 Gửi tim cho Mẹ</span>
+              </button>
+            </div>
+            
+            <div id="heart-counter" aria-live="polite" class="text-xs text-rose-300/80 font-medium flex items-center gap-1.5 bg-rose-950/40 px-3 py-1.5 rounded-full border border-rose-400/20">
+              <span>Đã gửi: </span>
+              <span id="hearts-count" class="font-bold text-rose-300">0</span>
+              <span>yêu thương</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Bottom Footer Quote -->
+    <footer class="text-center pb-2 text-xs sm:text-sm text-rose-300/60 font-body">
+      Trang thiết kế tri ân đặc biệt nhân ngày 20/10 • Dành tặng người phụ nữ vĩ đại nhất của con 🌷
+    </footer>
+
+  </main>
+
+  <!-- Interactive Click Floating Heart/Petal Elements script -->
+  <script>
+    // State
+    let loveCount = 0;
+    let audioPlaying = false;
+    let audioCtx = null;
+    let ambientInterval = null;
+    let bloomTimers = [];
+    const STEM_LEN = () => document.getElementById('flower-stem').getTotalLength();
+
+    // Hẹn giờ có theo dõi: bấm "Xem lại" nhiều lần sẽ huỷ các bước của lượt trước (bản gốc bị chạy chồng)
+    function later(fn, ms) { bloomTimers.push(setTimeout(fn, ms)); }
+
+    // Timeline Sequence for Sprouting, Blooming, and Revealing Message
+    function startBloomSequence() {
+      bloomTimers.forEach(clearTimeout);
+      bloomTimers = [];
+
+      const stem = document.getElementById('flower-stem');
+      const leafLeft = document.getElementById('leaf-left');
+      const leafRight = document.getElementById('leaf-right');
+      const calyx = document.getElementById('calyx');
+      const flowerHead = document.getElementById('flower-head');
+      const stageBadge = document.getElementById('stage-badge');
+      const wishCard = document.getElementById('wish-card');
+
+      // Reset
+      const len = Math.ceil(STEM_LEN()) + 2;
+      stem.style.strokeDasharray = len;
+      stem.style.strokeDashoffset = len;
+      leafLeft.style.opacity = '0';
+      leafLeft.style.transform = 'scale(0) rotate(-30deg)';
+      leafRight.style.opacity = '0';
+      leafRight.style.transform = 'scale(0) rotate(30deg)';
+      flowerHead.style.transform = 'scale(0) rotate(-45deg)';
+      flowerHead.style.opacity = '0';
+      calyx.style.opacity = '0';
+      stageBadge.textContent = '🌱 Hạt mầm đang nảy chồi vươn lên...';
+      stageBadge.className = 'mt-2 px-4 py-1.5 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs tracking-wider backdrop-blur-md transition-all duration-500';
+
+      wishCard.style.opacity = '0';
+      wishCard.style.transform = 'translateY(40px) scale(0.95)';
+      wishCard.style.pointerEvents = 'none';
+
+      // Step 1: Stem grows
+      later(() => { stem.style.strokeDashoffset = '0'; }, 300);
+
+      // Step 2: First leaf sprouts (1.3s)
+      later(() => {
+        leafLeft.style.opacity = '1';
+        leafLeft.style.transform = 'scale(1) rotate(0deg)';
+        stageBadge.textContent = '🌿 Cành lá đâm chồi xanh biếc...';
+        playNote(440, 0.4);
+      }, 1300);
+
+      // Step 3: Second leaf & calyx bud appear (2.0s)
+      later(() => {
+        leafRight.style.opacity = '1';
+        leafRight.style.transform = 'scale(1) rotate(0deg)';
+        calyx.style.opacity = '1';
+        stageBadge.textContent = '🌺 Nụ hoa hé mở đón ban mai...';
+        playNote(554.37, 0.4);
+      }, 2000);
+
+      // Step 4: Full Flower Bloom! (2.7s)
+      later(() => {
+        flowerHead.style.opacity = '1';
+        flowerHead.style.transform = 'scale(1) rotate(0deg)';
+        stageBadge.textContent = '✨ Hoa nở rạng ngời ngát hương sắc!';
+        stageBadge.className = 'mt-2 px-4 py-1.5 rounded-full bg-rose-500/20 border border-rose-400/40 text-rose-200 text-xs tracking-wider backdrop-blur-md transition-all duration-500 shadow-[0_0_15px_rgba(244,63,94,0.4)]';
+
+        // Cánh hoa bung ra đúng tâm bông hoa (bản gốc đoán theo % cửa sổ nên lệch trên mobile)
+        const r = flowerHead.getBoundingClientRect();
+        burstFlowerPetalsAt(r.left + r.width / 2, r.top + r.height / 2);
+        playNote(659.25, 0.6);
+        later(() => playNote(880, 0.8), 200);
+      }, 2700);
+
+      // Step 5: Wish Card Reveals gracefully (3.6s)
+      later(() => {
+        wishCard.style.opacity = '1';
+        wishCard.style.transform = 'translateY(0px) scale(1)';
+        wishCard.style.pointerEvents = 'auto';
+        playChimeMelody();
+        // Trên màn hình dọc, cuộn nhẹ để lời chúc hiện ra
+        if (window.innerWidth < 1024) {
+          wishCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+      }, 3600);
+    }
+
+    function replayAnimation() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      startBloomSequence();
+    }
+
+    // Continuous Falling Petals Generator
+    function initFallingPetals() {
+      const container = document.getElementById('petals-container');
+      const petalSVGs = [
+        // Rose Petal Shape 1
+        `<svg class="w-full h-full text-pink-400 drop-shadow-[0_2px_6px_rgba(244,63,94,0.4)]" viewBox="0 0 30 30" fill="currentColor"><path d="M15,2 C22,6 28,14 24,23 C20,29 10,29 5,22 C1,14 8,4 15,2 Z" opacity="0.85"/></svg>`,
+        // Rose Petal Shape 2
+        `<svg class="w-full h-full text-rose-400 drop-shadow-[0_2px_6px_rgba(244,63,94,0.4)]" viewBox="0 0 30 30" fill="currentColor"><path d="M15,1 C24,4 29,12 26,21 C22,28 12,29 6,24 C0,18 5,6 15,1 Z" opacity="0.75"/></svg>`,
+        // Blossom Petal Shape 3
+        `<svg class="w-full h-full text-rose-300 drop-shadow-[0_2px_4px_rgba(244,63,94,0.3)]" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C8 6 4 10 6 16C8 22 16 22 18 16C20 10 16 6 12 2Z" opacity="0.8"/></svg>`,
+        // Small White/Pink Blossom
+        `<svg class="w-full h-full text-pink-200" viewBox="0 0 24 24" fill="currentColor"><path d="M12 4C9 8 7 11 9 15C11 19 17 19 18 15C19 11 15 8 12 4Z" opacity="0.9"/></svg>`
+      ];
+
+      const initialCount = window.innerWidth < 640 ? 18 : 35;
+      for (let i = 0; i < initialCount; i++) {
+        createRandomPetal(container, petalSVGs, true);
+      }
+
+      setInterval(() => {
+        if (!document.hidden && document.querySelectorAll('.petal').length < (window.innerWidth < 640 ? 26 : 50)) {
+          createRandomPetal(container, petalSVGs, false);
+        }
+      }, 500);
+    }
+
+    function createRandomPetal(container, petalSVGs, initialSpread) {
+      const petal = document.createElement('div');
+      petal.className = 'petal';
+      const size = Math.floor(Math.random() * 22) + 16; // 16px - 38px
+      petal.style.width = size + 'px';
+      petal.style.height = size + 'px';
+      petal.style.left = Math.random() * 100 + 'vw';
+      
+      const duration = Math.random() * 6 + 6; // 6s - 12s
+      petal.style.animationDuration = duration + 's';
+      petal.style.animationDelay = (initialSpread ? (Math.random() * -12) : 0) + 's';
+      
+      const randomSvg = petalSVGs[Math.floor(Math.random() * petalSVGs.length)];
+      petal.innerHTML = randomSvg;
+      
+      container.appendChild(petal);
+
+      setTimeout(() => {
+        if (petal && petal.parentNode) {
+          petal.parentNode.removeChild(petal);
+        }
+      }, (duration + 2) * 1000);
+    }
+
+    // Burst More Petals On Demand
+    function burstFlowerPetals(e) {
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top;
+      burstFlowerPetalsAt(x, y);
+      playChimeMelody();
+    }
+
+    function burstFlowerPetalsAt(originX, originY) {
+      const container = document.body;
+      const count = 30;
+      const colors = ['#f43f5e', '#ec4899', '#f472b6', '#fda4af', '#fb7185', '#ffe4e6'];
+      
+      for (let i = 0; i < count; i++) {
+        const item = document.createElement('div');
+        item.style.position = 'fixed';
+        item.style.left = originX + 'px';
+        item.style.top = originY + 'px';
+        item.style.zIndex = '999';
+        item.style.pointerEvents = 'none';
+        
+        const size = Math.floor(Math.random() * 20) + 14;
+        item.style.width = size + 'px';
+        item.style.height = size + 'px';
+        
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        item.innerHTML = `<svg viewBox="0 0 30 30" fill="${color}" class="w-full h-full drop-shadow-md"><path d="M15,2 C22,6 28,14 24,23 C20,29 10,29 5,22 C1,14 8,4 15,2 Z"/></svg>`;
+        
+        container.appendChild(item);
+        
+        const angle = Math.random() * Math.PI * 2;
+        const velocity = Math.random() * 220 + 80;
+        const destX = Math.cos(angle) * velocity;
+        const destY = Math.sin(angle) * velocity - 60;
+        const rotate = Math.random() * 720 - 360;
+
+        item.animate([
+          { transform: 'translate(0, 0) scale(0.3) rotate(0deg)', opacity: 1 },
+          { transform: `translate(${destX}px, ${destY}px) scale(1.2) rotate(${rotate}deg)`, opacity: 0.9, offset: 0.7 },
+          { transform: `translate(${destX}px, ${destY + 140}px) scale(0.8) rotate(${rotate + 180}deg)`, opacity: 0 }
+        ], {
+          duration: 1800 + Math.random() * 600,
+          easing: 'cubic-bezier(0.25, 1, 0.5, 1)'
+        }).onfinish = () => item.remove();
+      }
+    }
+
+    // Send Hearts Interaction
+    function sendLoveHeart(e) {
+      loveCount++;
+      document.getElementById('hearts-count').textContent = loveCount;
+
+      const rect = e.currentTarget.getBoundingClientRect();
+      const x = rect.left + rect.width / 2;
+      const y = rect.top;
+
+      const heart = document.createElement('div');
+      heart.style.position = 'fixed';
+      heart.style.left = (x - 15) + 'px';
+      heart.style.top = (y - 20) + 'px';
+      heart.style.fontSize = '26px';
+      heart.style.zIndex = '999';
+      heart.style.pointerEvents = 'none';
+      heart.textContent = ['💖', '💕', '🌸', '💐', '❤️'][Math.floor(Math.random() * 5)];
+      
+      document.body.appendChild(heart);
+
+      const xOffset = (Math.random() - 0.5) * 120;
+      heart.animate([
+        { transform: 'translate(0, 0) scale(0.6)', opacity: 1 },
+        { transform: `translate(${xOffset}px, -120px) scale(1.5)`, opacity: 0.9, offset: 0.6 },
+        { transform: `translate(${xOffset * 1.5}px, -220px) scale(1.2)`, opacity: 0 }
+      ], {
+        duration: 1600,
+        easing: 'ease-out'
+      }).onfinish = () => heart.remove();
+
+      playNote(523.25 + Math.random() * 300, 0.3); // High sweet ping
+    }
+
+    // Gentle Audio Synthesizer for Romantic Ambiance Chimes (No external audio file needed!)
+    function initAudio() {
+      if (!audioCtx) {
+        const AC = window.AudioContext || window.webkitAudioContext;
+        if (!AC) return;
+        audioCtx = new AC();
+      }
+      // Trình duyệt (đặc biệt Safari/iOS) tạo AudioContext ở trạng thái "suspended" cho đến khi người dùng tương tác
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+    }
+
+    function playNote(freq, duration = 0.5) {
+      if (!audioCtx) return;
+      try {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        
+        gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (err) {}
+    }
+
+    function playChimeMelody() {
+      initAudio();
+      const notes = [523.25, 659.25, 783.99, 1046.5]; // C5, E5, G5, C6 arpeggio
+      notes.forEach((freq, idx) => {
+        setTimeout(() => playNote(freq, 0.8), idx * 160);
+      });
+    }
+
+    function toggleAudio() {
+      initAudio();
+      audioPlaying = !audioPlaying;
+      const icon = document.getElementById('music-icon');
+      const text = document.getElementById('music-text');
+      document.getElementById('music-toggle').setAttribute('aria-pressed', String(audioPlaying));
+
+      if (audioPlaying) {
+        if (ambientInterval) clearInterval(ambientInterval);
+        text.textContent = 'Đang phát giai điệu';
+        icon.classList.add('animate-spin');
+        // Play romantic lullaby chime sequence looping
+        const melody = [523.25, 587.33, 659.25, 783.99, 659.25, 880, 783.99, 1046.5];
+        let noteIdx = 0;
+        ambientInterval = setInterval(() => {
+          playNote(melody[noteIdx % melody.length], 0.9);
+          noteIdx++;
+        }, 800);
+      } else {
+        text.textContent = 'Bật âm điệu';
+        icon.classList.remove('animate-spin');
+        if (ambientInterval) { clearInterval(ambientInterval); ambientInterval = null; }
+      }
+    }
+
+    // Tạm dừng nhạc nền khi chuyển tab, tránh phát chồng khi quay lại
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden && audioPlaying) toggleAudio();
+    });
+
+    // Initialize on page load
+    window.addEventListener('DOMContentLoaded', () => {
+      initFallingPetals();
+      startBloomSequence();
+    });
+  </script>
+</body>
+</html>
